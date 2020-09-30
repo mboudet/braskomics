@@ -1,0 +1,7 @@
+Flask==1.1.2
+Bootstrap-Flask==1.4
+Flask-WTF==0.14.3
+Flask-FontAwesome==0.1.5
+Flask-Caching==1.9.0
+Flask-APScheduler==1.11.0
+SPARQLWrapper==1.8.5

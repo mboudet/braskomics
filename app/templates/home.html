@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Braskomics{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="container">
+    {% for val in data %}
+        {{ val.label.value }}
+        <br>
+    {% endfor %}
+  </div>
+</div>
+
+<br>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+{% endblock %}

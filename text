@@ -1,0 +1,6 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+SELECT DISTINCT ?gene1_Label WHERE {
+    ?gene1_uri rdf:type <http://askomics.org/data/gene> . ?gene1_uri rdfs:label ?gene1_Label .
+}
+LIMIT 10
