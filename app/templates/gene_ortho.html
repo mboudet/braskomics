@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Gene data{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="container">
+        <table style="text-align:center;">
+            <tr>
+                <th>Gene label</th>
+                <th>Reaction label</th>
+                <th>Pathway label</th>
+                <th>Pathway common name</th>
+            </tr>
+            {% for val in data %}
+            <tr>
+                <td>{{ val.gene1_Label.value }} </td> 
+                <td>{{ val.reaction1_Label.value }} </td> 
+                <td>{{ val.pathway1_Label.value }} </td> 
+                <td>{{ val.pathway1_COMMON_NAME.value }} </td> 
+            </tr>
+            {% endfor %}
+        </table>
+  </div>
+</div>
+
+<br>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+{% endblock %}
