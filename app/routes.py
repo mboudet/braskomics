@@ -19,12 +19,12 @@ def index():
 @app.route('/genes/<id>', methods=['GET'])
 def get_gene_pathways(id):
     data = get_gene_data(id)
-    return render_template('gene.html', title='Gene', data=data)
+    return render_template('gene.html', title='Gene reactions', data=data, gene=id)
 
 @app.route('/genes_ortho/<id>', methods=['GET'])
 def get_gene_ortho_pathways(id):
     data = get_gene_ortholog_data(id)
-    return render_template('gene_ortho.html', title='Gene', data=data)
+    return render_template('gene_ortho.html', title='Gene orthologs reactions', data=data, gene=id)
 
 
 @app.route('/gene-autocomplete', methods=['GET'])
@@ -34,8 +34,7 @@ def gene_autocomplete():
     return jsonify(data)
 
 def get_genes(count=0, start=""):
-    sparql = SPARQLWrapper("http://0.0.0.0:80/virtuoso/sparql")
-
+    sparql = SPARQLWrapper(current_app.config["SPARQL_ENDPOINT"])
     start_query = ""
     if start:
         # Meh...
@@ -65,7 +64,8 @@ def get_genes(count=0, start=""):
 
 # Get all results? Might take some time? -> Paginate?
 def get_gene_data(gene_id):
-    sparql = SPARQLWrapper("http://0.0.0.0:80/virtuoso/sparql")
+    sparql = SPARQLWrapper(current_app.config["SPARQL_ENDPOINT"])
+
     sparql.setQuery("""
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -91,7 +91,7 @@ def get_gene_data(gene_id):
     return results["results"]["bindings"]
 
 def get_gene_ortholog_data(gene_id):
-    sparql = SPARQLWrapper("http://0.0.0.0:80/virtuoso/sparql")
+    sparql = SPARQLWrapper(current_app.config["SPARQL_ENDPOINT"])
     sparql.setQuery("""
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>

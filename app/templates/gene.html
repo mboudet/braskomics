@@ -5,7 +5,10 @@
 {% block content %}
 <div class="container-fluid">
   <div class="container">
-        <table style="text-align:center;">
+        <h3>Listing all reactions and pathways associated with {{gene}}</h3>
+        <br>
+        {% if data %}
+        <table style="text-align:center;" class="table">
             <tr>
                 <th>Gene label</th>
                 <th>Reaction label</th>
@@ -21,6 +24,9 @@
             </tr>
             {% endfor %}
         </table>
+        {% else %}
+            <p> No reaction and pathways associated with this gene</p>
+        {% endif %}
   </div>
 </div>
 

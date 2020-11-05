@@ -5,22 +5,26 @@
 {% block content %}
 <div class="container-fluid">
   <div class="container">
-        <table style="text-align:center;">
+        <h3>Listing all reactions linked to orthologs of {{gene}}</h3>
+        <br>
+        {% if data %}
+        <table style="text-align:center;" class="table">
             <tr>
-                <th>Gene label</th>
+                <th>Gene1 label</th>
+                <th>Ortholog label</th>
                 <th>Reaction label</th>
-                <th>Pathway label</th>
-                <th>Pathway common name</th>
             </tr>
             {% for val in data %}
             <tr>
                 <td>{{ val.gene1_Label.value }} </td> 
+                <td>{{ val.gene2_Label.value }} </td> 
                 <td>{{ val.reaction1_Label.value }} </td> 
-                <td>{{ val.pathway1_Label.value }} </td> 
-                <td>{{ val.pathway1_COMMON_NAME.value }} </td> 
             </tr>
             {% endfor %}
         </table>
+        {% else %}
+            <p>No reactions include and ortholog of this gene</p>
+        {% endif %}
   </div>
 </div>
 
