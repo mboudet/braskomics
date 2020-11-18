@@ -5,17 +5,11 @@
 {% block content %}
 <div class="container-fluid">
   <div class="container">
-          <label for="gene">Select your gene: </label>
-          <input id="gene">
-          <button class="btn btn-info gene_react" data-url="/test/genes/">Reactions</button>
-          <button class="btn btn-info gene_react" data-url="/test/genes_ortho/" >Ortholog reactions</button>
+          <h3>Welcome to Braskomics</h3>
+          <p>Here, you will find several pre-configured queries to interact with the data registered in the<a href="https://bbip.askomics.org/">BBIP askomics instance</a></p>
+          <p>Please use the "Queries" tab to select your query</p>
   </div>
 </div>
 
 <br>
-{% endblock %}
-
-{% block scripts %}
-    {{ super() }}
-    <script src="{{ url_for('static', filename='js/genes.js') }}"></script>
 {% endblock %}

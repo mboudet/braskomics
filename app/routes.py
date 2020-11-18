@@ -12,9 +12,11 @@ app = Blueprint('app', __name__, url_prefix='/')
 @app.route('/')
 @app.route('/index')
 def index():
+    return render_template('home.html', title='Home')
 
-    results = get_genes(count=request.args.get('count'))
-    return render_template('home.html', title='Home', data=results["results"]["bindings"])
+@app.route('/queries')
+def queries():
+    return render_template('queries.html')
 
 @app.route('/genes/<id>', methods=['GET'])
 def get_gene_pathways(id):

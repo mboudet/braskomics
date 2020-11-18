@@ -2,7 +2,7 @@ $(function () {
 
   /* Functions */
     var NoResultsLabel = {label:"No Results", value:"No Results"};
-    $( "#gene" ).autocomplete({
+    $( ".gene_autocomplete" ).autocomplete({
       source: "/test/gene-autocomplete",
       minLength: 0,
       response: function(event, ui) {
@@ -25,7 +25,8 @@ $(function () {
     });
 
     $(".gene_react").on("click", function(){
-        var val = $( "#gene" ).val()
+        var target = $(this).attr("data-target")
+        var val = $(target).val()
         var url = $(this).attr("data-url")
         if (val){
             window.location.href = url + val;
